@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- 字符编码和视口设置 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- ============================================
+       主要元标签 (Primary Meta Tags)
+       这些标签用于搜索引擎优化(SEO)和浏览器显示
+       ============================================ -->
+  
+  <!-- 论文标题和作者 -->
+  <meta name="title" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition - Hanyu Zhu, Zhihao Zhan, Yuhang Ming, et al.">
+  
+  <!-- 研究贡献和发现 -->
+  <meta name="description" content="We propose DC-VLAQ, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. Specifically, we first introduce a lightweight residual-guided complementary fusion that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the Vector of Local Aggregated Queries (VLAQ), a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues.">
+  
+  <!-- 5-10个相关的研究领域关键词，用逗号分隔 -->
+  <meta name="keywords" content="VPR, Visual Place Recognition, Localization, Perception, Computer Vision">
+  
+  <!-- 论文作者 -->
+  <meta name="author" content="Hanyu Zhu, Zhihao Zhan, Yuhang Ming, Liang Li, Dibo Hou, Javier Civera, Wanzeng Kong">
+  
+  <!-- 搜索引擎索引设置 -->
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- ============================================
+       Open Graph / Facebook 元标签
+       这些标签控制当您的页面在Facebook、LinkedIn等社交媒体上分享时的显示效果
+       ============================================ -->
+  <meta property="og:type" content="article">
+  
+  <!-- 机构/实验室 -->
+  <meta property="og:site_name" content="BCCITA, Hangzhou Dianzi University">
+  
+  <meta property="og:title" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition">
+  
+  <!-- 研究描述 -->
+  <meta property="og:description" content="We propose DC-VLAQ, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. Specifically, we first introduce a lightweight residual-guided complementary fusion that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the Vector of Local Aggregated Queries (VLAQ), a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues.">
+  
+  <!-- 实际网站URL（完整路径） -->
+  <meta property="og:url" content="https://DC-VLAQ.github.io">
+  
+  <!-- 1200x630px的预览图，会显示在社交媒体分享卡片中 -->
+  <meta property="og:image" content="https://DC-VLAQ.github.io/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition - Research Preview">
+  
+  <!-- 文章发布信息 -->
+  <meta property="article:published_time" content="2026-01-19T05:19:56.000Z">
+  <meta property="article:author" content="Hanyu Zhu, Zhihao Zhan, Yuhang Ming, Liang Li, Dibo Hou, Javier Civera, Wanzeng Kong">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="Visual Place Recognition">
+  <meta property="article:tag" content="VPR">
+
+  <!-- ============================================
+       Twitter 卡片元标签
+       这些标签控制当您的页面在Twitter上分享时的显示效果
+       ============================================ -->
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- 实验室/机构Twitter账号（不需要@符号） -->
+  <meta name="twitter:site" content="">
+  
+  <!-- 第一作者的Twitter账号 -->
+  <meta name="twitter:creator" content="">
+  
+  <meta name="twitter:title" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition">
+  
+  <!-- 研究描述 -->
+  <meta name="twitter:description" content="We propose DC-VLAQ, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. Specifically, we first introduce a lightweight residual-guided complementary fusion that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the Vector of Local Aggregated Queries (VLAQ), a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues.">
+  
+  <!-- 社交预览图 -->
+  <meta name="twitter:image" content="static/images/social_preview.png">
+  <meta name="twitter:image:alt" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition - Research Preview">
+
+  <!-- ============================================
+       学术/研究特定元标签
+       这些标签用于学术搜索引擎和引用工具
+       ============================================ -->
+  <meta name="citation_title" content="DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition">
+  
+  <!-- 引用作者，格式：姓氏, 名字 -->
+  <meta name="citation_author" content="Zhu, Hanyu">
+  <meta name="citation_author" content="Zhan, Zhihao">
+  <meta name="citation_author" content="Ming, Yuhang">
+  <meta name="citation_author" content="Li, Liang">
+  <meta name="citation_author" content="Hou, Dibo">
+  <meta name="citation_author" content="Civera, Javier">
+  <meta name="citation_author" content="Kong, Wanzeng">
+  
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="arXiv">
+  
+  <!-- 论文PDF的URL -->
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2601.12729">
+  
+  <!-- ============================================
+       额外的SEO和浏览器设置
+       ============================================ -->
+  <!-- 主题颜色（用于移动浏览器地址栏） -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- ============================================
+       性能优化：预连接外部资源
+       这些预连接可以加快外部资源的加载速度
+       ============================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://polyfill.io">
+
+  <!-- 实际网站URL（完整路径） -->
+  <link rel="canonical" href="https://DC-VLAQ.github.io">
+
+  <!-- ============================================
+       页面标题
+       显示在浏览器标签页上
+       ============================================ -->
+  <title>DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition</title>
+  
+  <!-- ============================================
+       网站图标和应用图标
+       这些图标显示在浏览器标签、书签、移动设备主屏幕等位置
+       ============================================ -->
+  <link rel="icon" type="image/x-icon" href="static/images/robot.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="static/images/robot.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="static/images/robot_32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="static/images/robot_16x16.png">
+  <link rel="manifest" href="static/images/site.webmanifest">
+  
+  <!-- ============================================
+       关键CSS - 同步加载
+       这些CSS文件对页面渲染至关重要，需要立即加载
+       ============================================ -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- ============================================
+       非关键CSS - 异步加载
+       这些CSS文件可以延迟加载，不影响首屏渲染
+       ============================================ -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- 不支持preload的浏览器的后备方案 -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- ============================================
+       字体 - 优化加载
+       使用Google Fonts加载Inter字体
+       ============================================ -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- ============================================
+       延迟加载非关键JavaScript
+       这些脚本在页面主要内容加载后才执行
+       ============================================ -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- MathJax用于渲染数学公式 -->
+  <script defer src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script defer id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- ============================================
+       学术论文的结构化数据 (JSON-LD)
+       这些数据帮助搜索引擎理解您的研究内容
+       ============================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition",
+    "description": "We propose DC-VLAQ, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. Specifically, we first introduce a lightweight residual-guided complementary fusion that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the Vector of Local Aggregated Queries (VLAQ), a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues.",
+    "author": [
+      { "@type": "Person", "name": "Hanyu Zhu", "affiliation": { "@type": "Organization", "name": "BCCITA Provincial Key Laboratory, Hangzhou Dianzi University, China" } },
+      { "@type": "Person", "name": "Zhihao Zhan", "affiliation": { "@type": "Organization", "name": "TopXGun Robotics, China" } },
+      { "@type": "Person", "name": "Yuhang Ming", "affiliation": { "@type": "Organization", "name": "BCCITA Provincial Key Laboratory, Hangzhou Dianzi University, China" } },
+      { "@type": "Person", "name": "Liang Li", "affiliation": { "@type": "Organization", "name": "ICT State Key Laboratory, Zhejiang University, China" } },
+      { "@type": "Person", "name": "Dibo Hou", "affiliation": { "@type": "Organization", "name": "ICT State Key Laboratory, Zhejiang University, China" } },
+      { "@type": "Person", "name": "Javier Civera", "affiliation": { "@type": "Organization", "name": "I3A, University of Zaragoza, Spain" } },
+      { "@type": "Person", "name": "Wanzeng Kong", "affiliation": { "@type": "Organization", "name": "BCCITA Provincial Key Laboratory, Hangzhou Dianzi University, China" } }
+    ],
+    "datePublished": "2026-01-19",
+    "publisher": {
+      "@type": "Organization",
+      "name": "arXiv"
+    },
+    "url": "https://DC-VLAQ.github.io",
+    "image": "static/images/social_preview.png",
+    "keywords": ["Visual Place Recognition", "VPR", "Localization", "Perception", "Computer Vision"],
+    "abstract": "One of the central challenges in visual place recognition (VPR) is learning a robust global representation that remains discriminative under large viewpoint changes, illumination variations, and severe domain shifts. While visual foundation models (VFMs) provide strong local features, most existing methods rely on a single model, overlooking the complementary cues offered by different VFMs. However, exploiting such complementary information inevitably alters token distributions, which challenges the stability of existing query–based global aggregation schemes. To address these challenges, we propose DC-VLAQ, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. Specifically, we first introduce a lightweight residual-guided complementary fusion that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the Vector of Local Aggregated Queries (VLAQ), a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues.",
+    "citation": "@misc{zhu2026dcvlaqqueryresidualaggregationrobust,
+      title={DC-VLAQ: Query-Residual Aggregation for Robust Visual Place Recognition}, 
+      author={Hanyu Zhu and Zhihao Zhan and Yuhang Ming and Liang Li and Dibo Hou and Javier Civera and Wanzeng Kong},
+      year={2026},
+      eprint={2601.12729},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.12729}, 
+    }",
+    "isAccessibleForFree": true,
+    "license": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://DC-VLAQ.github.io"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "Visual Place Recognition"
+      },
+      {
+        "@type": "Thing", 
+        "name": "Computer Vision"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- ============================================
+       网站/组织的结构化数据
+       ============================================ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "BCCITA Provincial Key Laboratory, Hangzhou Dianzi University",
+    "url": "https://DC-VLAQ.github.io",
+    "logo": "https://DC-VLAQ.github.io/static/images/favicon.ico",
+    "sameAs": [
+      "https://github.com/hanyuzhubarry"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============================================
+       返回顶部按钮
+       当用户向下滚动时显示，点击后平滑滚动到页面顶部
+       ============================================ -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="返回顶部" aria-label="返回顶部">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ============================================
+       主要内容区域开始
+       ============================================ -->
+  <main id="main-content">
+  
+  <!-- ============================================
+       标题和作者信息部分 (Hero Section)
+       这是页面的主要标题区域，显示论文标题、作者和链接
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- TODO: 替换为您的论文标题 -->
+            <h1 class="title is-1 publication-title">DC-VLAQ: Query–Residual Aggregation for Robust Visual Place Recognition</h1>
+            
+            <!-- 作者信息 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=y5Ip_vQAAAAJ" target="_blank">Hanyu Zhu</a><sup>1*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=GEcK0R4AAAAJ&hl=zh-CN&oi=ao" target="_blank">Zhihao Zhan</a><sup>2*</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=Q91BzegAAAAJ&hl=zh-CN&oi=ao" target="_blank">Yuhang Ming</a><sup>1*†</sup>,</span>
+                <span class="author-block">
+                  <a href="https://scholar.google.com/citations?hl=zh-CN&user=6JscxDkAAAAJ" target="_blank">Liang Li</a><sup>3</sup>,</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=nPR1MocAAAAJ" target="_blank">Dibo Hou</a><sup>3</sup>,</span>
+              <br>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=j_sMzokAAAAJ&hl=zh-CN&oi=ao" target="_blank">Javier Civera</a><sup>4</sup>&nbsp;&nbsp;&nbsp;and</span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?hl=zh-CN&user=xvh66U8AAAAJ" target="_blank">Wanzeng Kong</a><sup>1</sup></span>
+            </div>
+
+            <!-- 机构信息 -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block is-size-6">
+                <span style="white-space: nowrap;"><sup>1</sup> BCCITA Provincial Key Laboratory, Hangzhou Dianzi University, China</span> ; <span style="white-space: nowrap;"><sup>2</sup> TopXGun Robotics, China</span> ; <span style="white-space: nowrap;"><sup>3</sup> ICT State Key Laboratory, Zhejiang University, China</span> ; <span style="white-space: nowrap;"><sup>4</sup> I3A, University of Zaragoza, Spain</span>
+              </span>
+              <span class="eql-cntrb"><small><br><sup>*</sup> Equal contribution &nbsp; <sup>†</sup> Corresponding author</small></span>
+            </div>
+
+            <!-- 论文链接按钮 -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- arXiv PDF链接 -->
+                <!-- arXiv论文ID -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/pdf/2601.12729" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+
+                <!-- GitHub代码链接（论文接收后开放） -->
+                <span class="link-block">
+                  <a href="javascript:void(0)" onclick="alert('The code will be released after the paper is accepted.'); return false;"
+                  class="external-link button is-normal is-rounded is-dark" title="The code will be released after the paper is accepted.">
+                  <span class="icon">
+                    <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                </a>
+              </span>
+
+              <!-- arXiv摘要链接 -->
+              <!-- arXiv论文ID -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2601.12729" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ============================================
+       介绍性图片部分（左文右图）
+       与上方间距：在 static/css/index.css 中搜「介绍性图片区块」改 .teaser .hero-body 的 padding-top
+       ============================================ -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div class="columns is-vcentered">
+          <div class="column is-5">
+            <p class="has-text-justified">
+              (Top) Most existing VPR methods rely on a single VFM to extract local tokens, which ignores complementary cues across different models.
+              (Mid.) Naive fusion of heterogeneous VFM tokens results in degraded performance, due to distorted distributions and unstable retrieval geometry.
+              (Bot.) Our DC-VLAQ introduces <i>Residual-Guided Complementary Fusion</i> to preserve the original token distribution while injecting complementary information, and <i>Query-Residual Global Aggregation</i> to achieve stable and discriminative global descriptors.
+            </p>
+          </div>
+          <div class="column is-7">
+            <img src="static/images/Teaser-v1.png" alt="项目介绍图片" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 结束介绍性图片部分 -->
+
+  <!-- ============================================
+       论文摘要部分
+       显示论文的完整摘要
+       ============================================ -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <!-- 论文摘要 -->
+            <p>
+            One of the central challenges in visual place recognition (VPR) is learning a robust global representation that remains discriminative under large viewpoint changes, illumination variations, and severe domain shifts. 
+    While visual foundation models (VFMs) provide strong local features, most existing methods rely on a single model, overlooking the complementary cues offered by different VFMs. However, exploiting such complementary information inevitably alters token distributions, which challenges the stability of existing query–based global aggregation schemes.
+    To address these challenges, we propose <strong>DC-VLAQ</strong>, a representation-centric framework that integrates the fusion of complementary VFMs and robust global aggregation. 
+    Specifically, we first introduce a lightweight <i>residual-guided complementary fusion</i> that anchors representations in the DINOv2 feature space while injecting complementary semantics from CLIP through a learned residual correction. In addition, we propose the <i>Vector of Local Aggregated Queries (VLAQ)</i>, a query-residual global aggregation scheme that encodes local tokens by their residual responses to learnable queries, resulting in improved stability and the preservation of fine-grained discriminative cues. 
+    Extensive experiments on standard VPR benchmarks, including Pitts30k, Tokyo24/7, MSLS, Nordland, SPED, and AmsterTime, demonstrate that DC-VLAQ consistently outperforms strong baselines and achieves state-of-the-art performance, particularly under challenging domain shifts and long-term appearance changes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 结束论文摘要部分 -->
+
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <!-- Overview of the pipeline -->
+            <h2 class="title is-3">Overview of the pipeline</h2>
+            
+            <!-- Overview of the pipeline图片 -->
+            <p class="has-text-centered">
+              <img src="static/images/Network-Architecture.png" alt="DC-VLAQ pipeline" class="blend-img-background center-image" style="max-width: 90%; height: auto; display: block; margin-left: 2%;" loading="lazy" />
+            </p>
+            
+            <!-- Overview of the pipeline详细描述 -->
+            <p>
+              An input image is first encoded by DINOv2 and CLIP to extract complementary local features. Then, a residual-guided fusion module injects semantic information from CLIP as residual corrections anchored to DINOv2 features. Finally, the fused tokens are aggregated by the proposed VLAQ aggregator to produce a compact global descriptor for nearest-neighbor place retrieval.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <!-- 章节标题 -->
+            <h2 class="title is-3">Qualitative comparison</h2>
+            
+            <!-- 章节相关的图片 -->
+            <div class="level-set has-text-justified">
+              <p>
+                <img src="static/images/Results.png" alt="Qualitative comparison" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy" />
+              </p>
+              
+              <!-- 章节的详细描述 -->
+              <p>
+                DC-VLAQ consistently retrieves visually and structurally consistent matches under challenging appearance changes, whereas baseline methods often fail due to over-reliance on global appearance cues.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section hero is-small">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <!-- 章节标题 -->
+            <h2 class="title is-3">Visualization of query activation heatmaps</h2>
+            
+            <p>
+              Compared to pre-trained DINOv2 and CLIP, DC-VLAQ produces more focused and spatially consistent activations on stable structural elements such as building facades, road boundaries, and static landmarks, while suppressing transient or less informative regions.
+            </p>
+
+            <!-- 章节相关的图片 -->
+            <p>
+              <img src="static/images/Query-map.png" alt="Visualization of query activation heatmaps" class="blend-img-background center-image" style="max-width: 100%; height: auto;" loading="lazy" />
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       结果部分
+       ============================================ -->
+  <section class="section hero is-small is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full">
+          <div class="content">
+            <h2 class="title is-3">Results</h2>
+
+            <h3 class="title is-4" style="margin-top: 2rem;">Standard VPR Benchmarks</h3>
+            <p class="is-size-7" style="color: var(--text-secondary); margin-bottom: 0.5rem;">The best is highlighted in <strong>bold</strong>, and the second best is <u>underlined</u>. <sup>†</sup>CricaVPR uses a cross-image encoder to correlate multiple images per place and is therefore excluded from the Pitts30k comparison. <sup>‡</sup>SALAD-CM leverages MSLS as an additional training set and is thus excluded from the MSLS comparison.</p>
+            <div class="table-wrapper">
+              <table class="table results-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th><th rowspan="2">Venue & Year</th>
+                    <th colspan="3">Pitts30k-test</th>
+                    <th colspan="3">Tokyo24/7</th>
+                    <th colspan="3">MSLS-val</th>
+                    <th colspan="3">MSLS-challenge</th>
+                    <th colspan="3">Nordland</th>
+                  </tr>
+                  <tr>
+                    <th>R@1</th><th>R@5</th><th>R@10</th>
+                    <th>R@1</th><th>R@5</th><th>R@10</th>
+                    <th>R@1</th><th>R@5</th><th>R@10</th>
+                    <th>R@1</th><th>R@5</th><th>R@10</th>
+                    <th>R@1</th><th>R@5</th><th>R@10</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>NetVLAD</td><td>CVPR'16</td><td>81.9</td><td>91.2</td><td>93.7</td><td>60.6</td><td>68.9</td><td>74.6</td><td>53.1</td><td>66.5</td><td>71.1</td><td>35.1</td><td>47.4</td><td>51.7</td><td>6.4</td><td>10.1</td><td>12.5</td></tr>
+                  <tr><td>SFRS</td><td>ECCV'20</td><td>89.4</td><td>94.7</td><td>95.9</td><td>81.0</td><td>88.3</td><td>92.4</td><td>69.2</td><td>80.3</td><td>83.1</td><td>41.6</td><td>52.0</td><td>56.3</td><td>16.1</td><td>23.9</td><td>28.4</td></tr>
+                  <tr><td>Patch-NetVLAD</td><td>CVPR'21</td><td>88.7</td><td>94.5</td><td>95.9</td><td>86.0</td><td>88.6</td><td>90.5</td><td>79.5</td><td>86.2</td><td>87.7</td><td>48.1</td><td>57.6</td><td>60.5</td><td>44.9</td><td>50.2</td><td>52.2</td></tr>
+                  <tr><td>TransVPR</td><td>CVPR'22</td><td>89.0</td><td>94.9</td><td>96.2</td><td>79.0</td><td>82.2</td><td>85.1</td><td>86.8</td><td>91.2</td><td>92.4</td><td>63.9</td><td>74.0</td><td>77.5</td><td>63.5</td><td>68.5</td><td>70.2</td></tr>
+                  <tr><td>CosPlace</td><td>CVPR'22</td><td>88.4</td><td>94.5</td><td>95.7</td><td>81.9</td><td>90.2</td><td>92.7</td><td>82.8</td><td>89.7</td><td>92.0</td><td>61.4</td><td>72.0</td><td>76.6</td><td>58.5</td><td>73.7</td><td>79.4</td></tr>
+                  <tr><td>EigenPlaces</td><td>ICCV'23</td><td>92.5</td><td>96.8</td><td>97.6</td><td>93.0</td><td>96.2</td><td>97.5</td><td>89.1</td><td>93.8</td><td>95.0</td><td>67.4</td><td>77.1</td><td>81.7</td><td>71.2</td><td>83.8</td><td>88.1</td></tr>
+                  <tr><td>MixVPR</td><td>WACV'23</td><td>91.5</td><td>95.5</td><td>96.3</td><td>85.1</td><td>91.7</td><td>94.3</td><td>88.0</td><td>92.7</td><td>94.6</td><td>64.0</td><td>75.9</td><td>80.6</td><td>76.2</td><td>86.9</td><td>90.3</td></tr>
+                  <tr><td>SelaVPR</td><td>ICLR'24</td><td>92.8</td><td>96.8</td><td>97.7</td><td>94.0</td><td>96.8</td><td>97.5</td><td>90.8</td><td>96.4</td><td>97.2</td><td>73.5</td><td>87.5</td><td>90.6</td><td>87.3</td><td>93.8</td><td>95.6</td></tr>
+                  <tr><td>CricaVPR<sup>†</sup></td><td>CVPR'24</td><td>94.9<sup>†</sup></td><td>97.3<sup>†</sup></td><td>98.2<sup>†</sup></td><td>93.0</td><td>97.5</td><td>98.1</td><td>90.0</td><td>95.4</td><td>96.4</td><td>69.0</td><td>82.1</td><td>85.7</td><td><u>90.7</u></td><td>96.3</td><td><u>97.6</u></td></tr>
+                  <tr><td>BoQ</td><td>CVPR'24</td><td><u>93.7</u></td><td><u>97.1</u></td><td><u>97.9</u></td><td><u>98.1</u></td><td><u>98.1</u></td><td><u>98.7</u></td><td><u>93.8</u></td><td>96.8</td><td>97.0</td><td><u>79.0</u></td><td>90.3</td><td>92.0</td><td>90.6</td><td>96.0</td><td>97.5</td></tr>
+                  <tr><td>SALAD</td><td>CVPR'24</td><td>92.5</td><td>96.4</td><td>97.5</td><td>94.6</td><td>97.5</td><td>97.8</td><td>92.2</td><td>96.4</td><td>97.0</td><td>75.0</td><td>88.8</td><td>91.3</td><td>89.7</td><td>95.5</td><td>97.0</td></tr>
+                  <tr><td>SALAD-CM<sup>‡</sup></td><td>ECCV'24</td><td>92.7</td><td>96.8</td><td><u>97.9</u></td><td>94.6</td><td>97.5</td><td>97.8</td><td>94.2<sup>‡</sup></td><td>97.2<sup>‡</sup></td><td>97.4<sup>‡</sup></td><td>82.7<sup>‡</sup></td><td>91.2<sup>‡</sup></td><td>92.7<sup>‡</sup></td><td><u>90.7</u></td><td><u>96.6</u></td><td>97.5</td></tr>
+                  <tr><td>EDTFormer</td><td>TCSVT'25</td><td>93.4</td><td>97.0</td><td><u>97.9</u></td><td>97.1</td><td>98.1</td><td>98.4</td><td>92.0</td><td>96.6</td><td>97.2</td><td>78.4</td><td>89.8</td><td>91.9</td><td>88.3</td><td>95.3</td><td>97.0</td></tr>
+                  <tr><td>FoL-global</td><td>AAAI'25</td><td>—</td><td>—</td><td>—</td><td>96.2</td><td>98.7</td><td>98.7</td><td>93.1</td><td><u>96.9</u></td><td><u>97.4</u></td><td>78.7</td><td><u>90.8</u></td><td><u>93.0</u></td><td>87.8</td><td>—</td><td>—</td></tr>
+                  <tr class="ours"><td><strong>DC-VLAQ (Ours)</strong></td><td>—</td><td><strong>94.3</strong></td><td><strong>97.6</strong></td><td><strong>98.3</strong></td><td><strong>98.7</strong></td><td><strong>99.7</strong></td><td><strong>99.7</strong></td><td><strong>94.2</strong></td><td><strong>97.3</strong></td><td><strong>97.6</strong></td><td><strong>81.7</strong></td><td><strong>92.2</strong></td><td><strong>94.5</strong></td><td><strong>92.8</strong></td><td><strong>97.2</strong></td><td><strong>98.2</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h3 class="title is-4" style="margin-top: 2rem;">Robustness-Oriented Benchmarks</h3>
+            <p class="is-size-7" style="color: var(--text-secondary); margin-bottom: 0.5rem;">The best is highlighted in <strong>bold</strong>, and the second best is <u>underlined</u>.</p>
+            <div class="table-wrapper">
+              <table class="table results-table">
+                <thead>
+                  <tr>
+                    <th rowspan="2">Method</th><th rowspan="2">Venue & Year</th>
+                    <th colspan="3">SPED</th>
+                    <th colspan="3">AmsterTime</th>
+                  </tr>
+                  <tr><th>R@1</th><th>R@5</th><th>R@10</th><th>R@1</th><th>R@5</th><th>R@10</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>NetVLAD</td><td>CVPR'16</td><td>78.7</td><td>88.3</td><td>91.4</td><td>16.3</td><td>—</td><td>—</td></tr>
+                  <tr><td>GeM</td><td>TPAMI'18</td><td>64.6</td><td>79.4</td><td>83.5</td><td>—</td><td>—</td><td>—</td></tr>
+                  <tr><td>CosPlace</td><td>CVPR'22</td><td>75.3</td><td>85.9</td><td>88.6</td><td>47.7</td><td>—</td><td>—</td></tr>
+                  <tr><td>EigenPlaces</td><td>ICCV'23</td><td>82.4</td><td>91.4</td><td>94.7</td><td>48.9</td><td>—</td><td>—</td></tr>
+                  <tr><td>MixVPR</td><td>WACV'23</td><td>85.2</td><td>92.1</td><td>94.6</td><td>40.2</td><td>—</td><td>—</td></tr>
+                  <tr><td>SelaVPR</td><td>ICLR'24</td><td>89.5</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                  <tr><td>CricaVPR</td><td>CVPR'24</td><td>—</td><td>—</td><td>—</td><td>64.7</td><td>82.8</td><td>87.5</td></tr>
+                  <tr><td>BoQ</td><td>CVPR'24</td><td><u>92.5</u></td><td><u>95.9</u></td><td><u>96.7</u></td><td>63.0</td><td>81.6</td><td>85.1</td></tr>
+                  <tr><td>SALAD</td><td>CVPR'24</td><td>92.1</td><td>96.2</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                  <tr><td>SALAD-CM</td><td>ECCV'24</td><td>89.3</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+                  <tr><td>EDTFormer</td><td>TCSVT'25</td><td>—</td><td>—</td><td>—</td><td><u>65.2</u></td><td><u>85.0</u></td><td><strong>89.0</strong></td></tr>
+                  <tr><td>FoL-global</td><td>AAAI'25</td><td>92.1</td><td>—</td><td>—</td><td>64.6</td><td>—</td><td>—</td></tr>
+                  <tr class="ours"><td><strong>DC-VLAQ (Ours)</strong></td><td>—</td><td><strong>93.9</strong></td><td><strong>97.7</strong></td><td><strong>98.2</strong></td><td><strong>66.8</strong></td><td><strong>85.6</strong></td><td><u>88.9</u></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- 结束结果部分 -->
+
+  <!-- ============================================
+       BibTeX引用部分
+       用户可以复制BibTeX格式的引用
+       ============================================ -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <!-- 复制按钮，点击后会将BibTeX代码复制到剪贴板 -->
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="复制BibTeX到剪贴板">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+      <!-- BibTeX引用，格式应该符合学术标准 -->
+      <pre id="bibtex-code"><code>@misc{zhu2026dcvlaqqueryresidualaggregationrobust,
+      title={DC-VLAQ: Query-Residual Aggregation for Robust Visual Place Recognition}, 
+      author={Hanyu Zhu and Zhihao Zhan and Yuhang Ming and Liang Li and Dibo Hou and Javier Civera and Wanzeng Kong},
+      year={2026},
+      eprint={2601.12729},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2601.12729}, 
+}</code></pre>
+    </div>
+  </section>
+  <!-- 结束BibTeX引用部分 -->
+
+  <!-- ============================================
+       页脚
+       包含版权信息和模板来源
+       ============================================ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- 结束页脚 -->
+
+  </main>
+  <!-- 主要内容区域结束 -->
+  
+</body>
+</html>
